@@ -100,6 +100,8 @@ int evaluate(unsigned short state) {
         return kWinWeight;
     if ((state & 0x00ff) == 0x00ff)
         return kLoseWeight * -1;
+    if (((state & 0x00ff) == 0x00f0)||((state & 0x00ff) == 0x000f))
+        return kLoseWeight * -1;
     for (i = 0; i < 2; i++) {
         for (j = 0; j < 2; j++) {
             if (((state>>(which_player[i] + which_hand[j]))&0x0f) == 0x0f) {
